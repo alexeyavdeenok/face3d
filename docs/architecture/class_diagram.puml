@@ -1,0 +1,117 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+title Domain contracts — Face3D Studio
+
+package "domain (контракты и DTO)" {
+
+  interface FaceReconstructionInterface <<ABC>> {
+    +reconstruct(image, config, progress, cancel) : ReconstructionResult
+    +load_weights(path)
+    +is_ready() : bool
+    +unload()
+    +get_info() : ModelInfo
+  }
+
+  interface FaceDepthModelInterface <<ABC>> {
+    +load_weights(path)
+    +predict_depth(image, cancel) : DepthMap
+    +is_ready() : bool
+    +unload()
+    +get_info() : ModelInfo
+  }
+
+  interface FaceMeshReconstructorInterface <<ABC>> {
+    +reconstruct(image, depth_map, config, cancel) : FaceMesh
+    +export_mesh(mesh, path) : Path
+  }
+
+  interface JobRepository <<ABC>> {
+    +save(job)
+    +get(id) : ReconstructionJob | None
+    +list_recent(limit) : List<ReconstructionJob>
+    +delete(id)
+  }
+
+  interface MeshViewer <<Protocol>> {
+    +show(mesh, title)
+    +update(mesh)
+    +close()
+  }
+
+  class ReconstructionConfig <<DTO>> {
+    +mesh_stride : int
+    +max_depth_jump : float
+    +focal_length_px : float | None
+  }
+
+  class DepthMap <<DTO>> {
+    +values : float32[H,W]
+    +mode : DepthMode
+    +width, height : int
+  }
+
+  class FaceMesh <<DTO>> {
+    +vertices : float32[N,3]
+    +faces : int32[M,3]
+    +vertex_colors : uint8[N,3] | None
+  }
+
+  class ModelInfo <<DTO>> {
+    +name, version, backend, device : str
+  }
+
+  class ReconstructionResult <<DTO>> {
+    +total_time_ms : float
+    +warnings : List<str>
+  }
+
+  class ReconstructionJob <<entity>> {
+    +id : str
+    +backend : BackendKind
+    +status : JobStatus
+    +created_at, updated_at : datetime
+    +result : ReconstructionResult | None
+  }
+}
+
+package "infrastructure (клиент, ваш код)" {
+  class RemoteBackend
+  class LocalBackend
+  class InMemoryJobRepository
+  class SqlAlchemyJobRepository
+}
+
+package "ML service (репозиторий ML-разработчика)" {
+  class InferenceAPI
+  class TorchDepthModel
+  class TrimeshReconstructor
+}
+
+FaceReconstructionInterface <|.. RemoteBackend
+FaceReconstructionInterface <|.. LocalBackend
+JobRepository <|.. InMemoryJobRepository
+JobRepository <|.. SqlAlchemyJobRepository
+
+FaceDepthModelInterface <|.. TorchDepthModel
+FaceMeshReconstructorInterface <|.. TrimeshReconstructor
+
+ReconstructionResult *-- DepthMap
+ReconstructionResult *-- FaceMesh
+ReconstructionResult *-- ModelInfo
+ReconstructionJob *-- ReconstructionResult
+
+RemoteBackend ..> ReconstructionResult : "HTTP"
+InferenceAPI ..> TorchDepthModel
+InferenceAPI ..> TrimeshReconstructor
+LocalBackend ..> FaceDepthModelInterface
+LocalBackend ..> FaceMeshReconstructorInterface
+
+note right of FaceReconstructionInterface
+  Фасад: склеивает depth-модель
+  и mesh-реконструктор в пайплайн.
+  Реализуется вами (RemoteBackend)
+  и/или ML-разработчиком (LocalBackend).
+end note
+
+@enduml

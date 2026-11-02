@@ -1,0 +1,43 @@
+@startuml
+!include <C4/C4_Container>
+
+title Container — Face3D Studio
+
+Person(user, "Пользователь")
+
+System_Boundary(client, "Face3D Studio — клиент (Python / PySide6)") {
+  Container(ui, "UI", "PySide6", "Загрузка фото, прогресс, карта глубины, 3D-вьюер")
+  Container(service, "ReconstructionService", "Python", "Оркестрация: preprocess → backend → persist")
+  Container(router, "BackendRouter", "Python", "Выбор local / remote по конфигу")
+  Container(remote_be, "RemoteBackend", "httpx", "HTTP-клиент к Inference API")
+  Container(local_be, "LocalBackend (опц.)", "Python", "Локальный фасад над моделью (in-process)")
+  Container(repo, "JobRepository", "SQLAlchemy", "Сохранение/чтение заданий")
+  Container(viewer, "MeshViewer", "Protocol", "Браузерный / Qt-вьюер")
+}
+
+System_Boundary(ml_zone, "Зона ML-разработчика (отдельный репозиторий + Docker") {
+  Container(api, "Inference API", "FastAPI", "REST-эндпоинты /v1/reconstruct, /v1/jobs/{id}, /health")
+  Container(depth, "FaceDepthModel", "PyTorch", "Оценка глубины лица")
+  Container(mesh_rec, "MeshReconstructor", "trimesh / open3d", "Построение и топология сетки")
+}
+
+ContainerDb_Ext(db, "Database", "PostgreSQL / SQLite", "История заданий")
+ContainerDb_Ext(s3, "Object Storage", "S3 / MinIO", "Веса модели, экспортированные GLB")
+
+Rel(user, ui, "Загружает фото, смотрит результат")
+Rel(ui, service, "reconstruct(image, config)")
+Rel(ui, viewer, "show(mesh)")
+Rel(service, router, "получить бэкенд")
+Rel(router, remote_be, "backend = remote")
+Rel(router, local_be, "backend = local")
+Rel(remote_be, api, "HTTP JSON + multipart")
+Rel(api, depth, "predict_depth()")
+Rel(api, mesh_rec, "reconstruct()")
+Rel(local_be, depth, "predict_depth() (опц., in-process)")
+Rel(local_be, mesh_rec, "reconstruct() (опц., in-process)")
+Rel(service, repo, "save(job)")
+Rel(repo, db, "SQL")
+Rel(api, s3, "загрузка весов при старте")
+Rel(service, s3, "экспорт GLB (если настроено)")
+
+@enduml

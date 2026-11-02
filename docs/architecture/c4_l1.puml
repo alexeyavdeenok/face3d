@@ -1,0 +1,20 @@
+@startuml
+!include <C4/C4_Context>
+
+title System Context — Face3D Studio
+
+Person(user, "Пользователь", "3D-художник / дизайнер / разработчик игр")
+
+System(app, "Face3D Studio", "Десктопное приложение для автоматической реконструкции лица по фотографиям в текстурированную 3D-модель")
+
+System_Ext(api, "Inference API", "Удалённый ML-сервис: FastAPI + GPU + модель")
+System_Ext(storage, "Object Storage", "S3 / MinIO: веса модели, экспортированные GLB")
+System_Ext(db, "Database", "PostgreSQL / SQLite: история заданий и результаты")
+
+Rel(user, app, "Загружает фото,\nсмотрит и экспортирует модель")
+Rel(app, api, "HTTP / REST")
+Rel(app, db, "SQL")
+Rel(app, storage, "Чтение/запись файлов")
+Rel(api, storage, "Загружает веса модели")
+
+@enduml

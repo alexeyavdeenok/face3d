@@ -1,0 +1,58 @@
+@startuml
+title Sequence — реконструкция через удалённый сервис
+
+actor User
+participant "UI\n(PySide6, GUI thread)" as UI
+participant "ReconstructionWorker\n(QThread)" as Worker
+participant "ReconstructionService" as Service
+participant "BackendRouter" as Router
+participant "RemoteBackend" as RB
+participant "Inference API\n(FastAPI)" as API
+participant "JobRepository" as Repo
+database "Database" as DB
+
+User -> UI : загружает фото,\nнажимает «Реконструировать»
+UI -> Worker : start(image, config)
+activate Worker
+
+Worker -> Service : reconstruct(image, config,\nprogress, cancel)
+activate Service
+
+Service -> Service : preprocess(image)
+Service -> Repo : save(job, status=RUNNING)
+Repo -> DB : UPSERT
+Service -> Router : get_backend()
+Router --> Service : RemoteBackend
+Service -> RB : reconstruct(image, config, progress, cancel)
+activate RB
+
+RB -> API : POST /v1/reconstruct\n(multipart + JSON config)
+API --> RB : { job_id }
+loop polling
+  RB -> API : GET /v1/jobs/{id}
+  API --> RB : { status, progress, stage, ... }
+  RB -> Worker : progress(pct, stage)
+  Worker -> UI : progress.emit(pct, stage) [thread-safe]
+  UI -> User : прогресс-бар
+  alt пользователь нажал Cancel
+    User -> UI : Cancel
+    UI -> Worker : cancel()
+    Worker -> RB : cancel_event.set()
+    RB -> API : POST /v1/jobs/{id}/cancel
+  end
+end
+
+API --> RB : { status: DONE, result }
+deactivate RB
+RB --> Service : ReconstructionResult
+Service -> Repo : save(job, status=DONE, result)
+Repo -> DB : UPDATE
+Service --> Worker : ReconstructionResult
+deactivate Service
+
+Worker -> UI : finished_ok.emit(result) [signal]
+deactivate Worker
+UI -> UI : viewer.show(result.mesh)
+UI -> User : 3D-модель отображается
+
+@enduml
