@@ -1,117 +1,179 @@
+
 @startuml
 skinparam classAttributeIconSize 0
+hide empty members
 
-title Domain contracts — Face3D Studio
+title Domain & Application Contracts — Face3D Studio
 
-package "domain (контракты и DTO)" {
+package "domain — модели и контракты" {
 
-  interface FaceReconstructionInterface <<ABC>> {
-    +reconstruct(image, config, progress, cancel) : ReconstructionResult
-    +load_weights(path)
-    +is_ready() : bool
-    +unload()
-    +get_info() : ModelInfo
-  }
+    interface FaceReconstructionInterface <<ABC>> {
+        +reconstruct(images, config, progress, cancel) : ReconstructionResult
+        +load_weights(path)
+        +is_ready() : bool
+        +unload()
+        +get_info() : ModelInfo
+    }
 
-  interface FaceDepthModelInterface <<ABC>> {
-    +load_weights(path)
-    +predict_depth(image, cancel) : DepthMap
-    +is_ready() : bool
-    +unload()
-    +get_info() : ModelInfo
-  }
+    interface FaceDepthModelInterface <<ABC>> {
+        +load_weights(path)
+        +predict_depth(image, cancel) : DepthMap
+        +is_ready() : bool
+        +unload()
+        +get_info() : ModelInfo
+    }
 
-  interface FaceMeshReconstructorInterface <<ABC>> {
-    +reconstruct(image, depth_map, config, cancel) : FaceMesh
-    +export_mesh(mesh, path) : Path
-  }
+    interface FaceMeshReconstructorInterface <<ABC>> {
+        +reconstruct(image, depth_map, config, cancel) : FaceMesh
+    }
 
-  interface JobRepository <<ABC>> {
-    +save(job)
-    +get(id) : ReconstructionJob | None
-    +list_recent(limit) : List<ReconstructionJob>
-    +delete(id)
-  }
+    interface JobRepository <<ABC>> {
+        +save(job)
+        +get(id) : ReconstructionJob | None
+        +list_recent(limit) : List[ReconstructionJob]
+        +delete(id)
+    }
 
-  interface MeshViewer <<Protocol>> {
-    +show(mesh, title)
-    +update(mesh)
-    +close()
-  }
+    interface MeshExporter <<Protocol>> {
+        +export_mesh(mesh, path) : Path
+    }
 
-  class ReconstructionConfig <<DTO>> {
-    +mesh_stride : int
-    +max_depth_jump : float
-    +focal_length_px : float | None
-  }
+    interface MeshViewer <<Protocol>> {
+        +show(mesh, title)
+        +update(mesh)
+        +close()
+    }
 
-  class DepthMap <<DTO>> {
-    +values : float32[H,W]
-    +mode : DepthMode
-    +width, height : int
-  }
+    class ReconstructionConfig <<DTO>> {
+        +depth_mode : DepthMode
+        +mesh_stride : int
+        +max_depth_jump : float
+        +focal_length_px : float | None
+    }
 
-  class FaceMesh <<DTO>> {
-    +vertices : float32[N,3]
-    +faces : int32[M,3]
-    +vertex_colors : uint8[N,3] | None
-  }
+    class DepthMap <<DTO>> {
+        +values : float32[H,W]
+        +mode : DepthMode
+        +width : int
+        +height : int
+    }
 
-  class ModelInfo <<DTO>> {
-    +name, version, backend, device : str
-  }
+    class FaceMesh <<DTO>> {
+        +vertices : float32[N,3]
+        +faces : int32[M,3]
+        +vertex_colors : uint8[N,3] | None
+    }
 
-  class ReconstructionResult <<DTO>> {
-    +total_time_ms : float
-    +warnings : List<str>
-  }
+    class ModelInfo <<DTO>> {
+        +name : str
+        +version : str
+        +backend : str
+        +device : str
+    }
 
-  class ReconstructionJob <<entity>> {
-    +id : str
-    +backend : BackendKind
-    +status : JobStatus
-    +created_at, updated_at : datetime
-    +result : ReconstructionResult | None
-  }
+    class ReconstructionResult <<DTO>> {
+        +depth_map : DepthMap
+        +mesh : FaceMesh
+        +total_time_ms : float
+        +model_info : ModelInfo
+        +source_name : str
+        +warnings : List[str]
+    }
+
+    class ReconstructionJob <<Entity>> {
+        +id : str
+        +backend : BackendKind
+        +status : JobStatus
+        +created_at : datetime
+        +updated_at : datetime
+        +source_names : List[str]
+        +error_message : str | None
+        +result : ReconstructionResult | None
+    }
 }
 
-package "infrastructure (клиент, ваш код)" {
-  class RemoteBackend
-  class LocalBackend
-  class InMemoryJobRepository
-  class SqlAlchemyJobRepository
+package "application — публичные операции приложения" {
+
+    interface GenerationAPI {
+        +start_generation(photos, settings) : str
+        +cancel_generation(job_id)
+        +get_status(job_id) : GenerationStatus
+        +get_result(job_id) : ArtifactDTO
+    }
+
+    interface HistoryAPI {
+        +list_history(query) : List[HistoryItemDTO]
+        +delete_job(job_id)
+    }
+
+    interface ExportAPI {
+        +export_artifact(artifact_id, path, format) : Path
+    }
+
+    interface PreviewAPI {
+        +open_preview(artifact_id)
+        +close_preview()
+    }
+
+    interface SettingsAPI {
+        +get_settings() : GenerationSettings
+        +update_settings(settings)
+    }
+
+    class GenerationStatus <<DTO>>
+    class HistoryItemDTO <<DTO>>
+    class ArtifactDTO <<DTO>>
+    class GenerationSettings <<DTO>>
 }
 
-package "ML service (репозиторий ML-разработчика)" {
-  class InferenceAPI
-  class TorchDepthModel
-  class TrimeshReconstructor
+package "infrastructure — реализации" {
+
+    class ReconstructionAdapter
+    class SQLiteJobRepository
+    class SQLiteSettingsRepository
+    class FileMeshExporter
+    class QtMeshViewer
 }
 
-FaceReconstructionInterface <|.. RemoteBackend
-FaceReconstructionInterface <|.. LocalBackend
-JobRepository <|.. InMemoryJobRepository
-JobRepository <|.. SqlAlchemyJobRepository
-
-FaceDepthModelInterface <|.. TorchDepthModel
-FaceMeshReconstructorInterface <|.. TrimeshReconstructor
+FaceReconstructionInterface <|.. ReconstructionAdapter
+JobRepository <|.. SQLiteJobRepository
+MeshExporter <|.. FileMeshExporter
+MeshViewer <|.. QtMeshViewer
 
 ReconstructionResult *-- DepthMap
 ReconstructionResult *-- FaceMesh
 ReconstructionResult *-- ModelInfo
-ReconstructionJob *-- ReconstructionResult
+ReconstructionJob o-- ReconstructionResult
 
-RemoteBackend ..> ReconstructionResult : "HTTP"
-InferenceAPI ..> TorchDepthModel
-InferenceAPI ..> TrimeshReconstructor
-LocalBackend ..> FaceDepthModelInterface
-LocalBackend ..> FaceMeshReconstructorInterface
+GenerationAPI ..> ReconstructionJob
+GenerationAPI ..> ReconstructionResult
+HistoryAPI ..> JobRepository
+ExportAPI ..> MeshExporter
+PreviewAPI ..> MeshViewer
+GenerationAPI ..> FaceReconstructionInterface
+
+ReconstructionAdapter ..> FaceDepthModelInterface
+ReconstructionAdapter ..> FaceMeshReconstructorInterface
 
 note right of FaceReconstructionInterface
-  Фасад: склеивает depth-модель
-  и mesh-реконструктор в пайплайн.
-  Реализуется вами (RemoteBackend)
-  и/или ML-разработчиком (LocalBackend).
+    Контракт фасада реконструкции.
+    Коллекция изображений отражает целевое
+    требование работы с множеством фото.
+    Фактические ограничения определяются
+    выбранной реализацией алгоритма.
+end note
+
+note bottom of ReconstructionJob
+    В БД сохраняются метаданные и пути
+    к артефактам. Полные массивы геометрии
+    и текстур не следует хранить в SQLite.
+end note
+
+note bottom of FaceMesh
+    Текущая модель отражает имеющийся DTO.
+    UV-координаты и текстурные карты
+    добавляются после выбора формата
+    представления текстуры.
 end note
 
 @enduml

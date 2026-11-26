@@ -1,3 +1,4 @@
+
 @startuml
 !include <C4/C4_Container>
 
@@ -5,39 +6,80 @@ title Container — Face3D Studio
 
 Person(user, "Пользователь")
 
-System_Boundary(client, "Face3D Studio — клиент (Python / PySide6)") {
-  Container(ui, "UI", "PySide6", "Загрузка фото, прогресс, карта глубины, 3D-вьюер")
-  Container(service, "ReconstructionService", "Python", "Оркестрация: preprocess → backend → persist")
-  Container(router, "BackendRouter", "Python", "Выбор local / remote по конфигу")
-  Container(remote_be, "RemoteBackend", "httpx", "HTTP-клиент к Inference API")
-  Container(local_be, "LocalBackend (опц.)", "Python", "Локальный фасад над моделью (in-process)")
-  Container(repo, "JobRepository", "SQLAlchemy", "Сохранение/чтение заданий")
-  Container(viewer, "MeshViewer", "Protocol", "Браузерный / Qt-вьюер")
+System_Boundary(face3d, "Face3D Studio") {
+
+    Container(qml, "QML Views", "PySide6 / Qt Quick", "Отображение экранов и компонентов интерфейса")
+
+    Container(controllers, "UI Controllers", "Python / PySide6", "Обработка действий пользователя и управление представлениями")
+
+    Container(api, "Application API", "Python", "Публичные операции приложения")
+
+    Container(generationApi, "Generation API", "Python", "Запуск, отмена и получение состояния реконструкции")
+
+    Container(historyApi, "History API", "Python", "Получение, фильтрация и удаление истории")
+
+    Container(exportApi, "Export API", "Python", "Экспорт результатов реконструкции")
+
+    Container(previewApi, "Preview API", "Python", "Открытие и закрытие предпросмотра модели")
+
+    Container(settingsApi, "Settings API", "Python", "Получение и изменение настроек")
+
+    Container(services, "Application Services", "Python", "Оркестрация прикладных сценариев")
+
+    Container(reconstructionService, "ReconstructionService", "Python", "Управление процессом реконструкции")
+
+    Container(router, "BackendRouter", "Python", "Выбор подходящего backend")
+
+    Container(remote, "RemoteBackend", "Python", "Взаимодействие с удалённым сервисом")
+
+    Container(local, "LocalBackend", "Python", "Локальное выполнение реконструкции")
+
+    Container(repository, "JobRepository", "Python", "Хранение и получение заданий")
+
+    Container(exporter, "MeshExporter", "Python", "Экспорт трёхмерной модели")
+
+    Container(viewer, "MeshViewer", "Python / Qt", "Предпросмотр трёхмерной модели")
 }
 
-System_Boundary(ml_zone, "Зона ML-разработчика (отдельный репозиторий + Docker") {
-  Container(api, "Inference API", "FastAPI", "REST-эндпоинты /v1/reconstruct, /v1/jobs/{id}, /health")
-  Container(depth, "FaceDepthModel", "PyTorch", "Оценка глубины лица")
-  Container(mesh_rec, "MeshReconstructor", "trimesh / open3d", "Построение и топология сетки")
-}
+ContainerDb(db, "Database", "SQLite", "История реконструкций, настройки и метаданные")
 
-ContainerDb_Ext(db, "Database", "PostgreSQL / SQLite", "История заданий")
-ContainerDb_Ext(s3, "Object Storage", "S3 / MinIO", "Веса модели, экспортированные GLB")
+System_Ext(storage, "Object Storage", "S3 / MinIO", "Хранение исходных фотографий и результатов")
 
-Rel(user, ui, "Загружает фото, смотрит результат")
-Rel(ui, service, "reconstruct(image, config)")
-Rel(ui, viewer, "show(mesh)")
-Rel(service, router, "получить бэкенд")
-Rel(router, remote_be, "backend = remote")
-Rel(router, local_be, "backend = local")
-Rel(remote_be, api, "HTTP JSON + multipart")
-Rel(api, depth, "predict_depth()")
-Rel(api, mesh_rec, "reconstruct()")
-Rel(local_be, depth, "predict_depth() (опц., in-process)")
-Rel(local_be, mesh_rec, "reconstruct() (опц., in-process)")
-Rel(service, repo, "save(job)")
-Rel(repo, db, "SQL")
-Rel(api, s3, "загрузка весов при старте")
-Rel(service, s3, "экспорт GLB (если настроено)")
+System_Ext(inference, "Inference Service", "FastAPI", "Удалённое выполнение ML-модели")
+
+Container(depthModel, "FaceDepthModel", "PyTorch", "Получение карты глубины лица")
+
+Container(meshReconstructor, "MeshReconstructor", "trimesh / Open3D", "Построение трёхмерной сетки")
+
+Rel(user, qml, "Взаимодействует с интерфейсом")
+Rel(qml, controllers, "Сигналы, свойства и слоты")
+Rel(controllers, api, "Вызывает операции приложения")
+
+Rel(api, generationApi, "Запросы генерации")
+Rel(api, historyApi, "Запросы истории")
+Rel(api, exportApi, "Запросы экспорта")
+Rel(api, previewApi, "Запросы предпросмотра")
+Rel(api, settingsApi, "Запросы настроек")
+
+Rel(generationApi, services, "Передаёт команды")
+Rel(historyApi, repository, "Получает историю")
+Rel(exportApi, exporter, "Передаёт модель на экспорт")
+Rel(previewApi, viewer, "Передаёт модель на просмотр")
+
+Rel(services, reconstructionService, "Запускает сценарий реконструкции")
+Rel(reconstructionService, router, "Передаёт задачу")
+Rel(router, remote, "Выбирает удалённый backend")
+Rel(router, local, "Выбирает локальный backend")
+
+Rel(remote, inference, "Отправляет фотографии и получает результат")
+Rel(local, depthModel, "Получает карту глубины")
+Rel(local, meshReconstructor, "Строит трёхмерную сетку")
+
+Rel(reconstructionService, repository, "Сохраняет состояние задания")
+Rel(repository, db, "Читает и записывает данные")
+
+Rel(exporter, storage, "Сохраняет результат")
+Rel(reconstructionService, storage, "Сохраняет и загружает файлы")
+Rel(qml, storage, "Выбирает исходные фотографии")
 
 @enduml

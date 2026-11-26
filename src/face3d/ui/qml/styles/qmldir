@@ -1,0 +1,2 @@
+module Face3D.Styles
+singleton Colors 1.0 Colors.qml

@@ -1,0 +1,9 @@
+
+# GUI framework
+PySide6>=6.8,<7.0
+
+# Numerical computing
+numpy>=2.0,<3.0
+
+# Image processing
+Pillow>=11.0,<13.0

@@ -1,0 +1,68 @@
+
+@startuml
+
+skinparam classAttributeIconSize 0
+hide empty members
+
+title UI Architecture — MVC-lite / Face3D Studio
+
+package "View — Qt Quick / QML" {
+
+    class MainScreen <<QML View>>
+    class GenerationScreen <<QML View>>
+    class HistoryScreen <<QML View>>
+}
+
+package "Controller — Python / PySide6" {
+
+    class MainController
+    class GenerationController
+    class HistoryController
+}
+
+package "Application API" {
+
+    interface GenerationAPI {
+        +start_generation(photos, settings)
+        +cancel_generation(job_id)
+        +get_status(job_id)
+        +get_result(job_id)
+    }
+
+    interface HistoryAPI {
+        +list_history(query)
+        +delete_job(job_id)
+    }
+
+    interface ExportAPI {
+        +export_artifact(artifact_id, path, format)
+    }
+
+    interface PreviewAPI {
+        +open_preview(artifact_id)
+        +close_preview()
+    }
+
+    interface SettingsAPI {
+        +get_settings()
+        +update_settings(settings)
+    }
+}
+
+MainScreen --> MainController : Действия пользователя
+GenerationScreen --> GenerationController : Запуск и отмена
+HistoryScreen --> HistoryController : Фильтрация и выбор записей
+
+MainController --> GenerationAPI
+MainController --> HistoryAPI
+MainController --> ExportAPI
+MainController --> PreviewAPI
+MainController --> SettingsAPI
+
+GenerationController --> GenerationAPI
+
+HistoryController --> HistoryAPI
+HistoryController --> ExportAPI
+HistoryController --> PreviewAPI
+
+@enduml
