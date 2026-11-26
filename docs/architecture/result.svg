@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="1440" height="900" fill="#232323"/>
+  
+  <!-- header -->
+  <rect x="0" y="0" width="1440" height="48" fill="#1a1a1a"/>
+  <line x1="0" y1="48" x2="1440" y2="48" stroke="#3a3a3a"/>
+  <circle cx="24" cy="24" r="9" fill="#4a9eff"/>
+  <text x="40" y="29" font-size="14" font-weight="600" fill="#e0e0e0">Face3D Studio</text>
+  <text x="270" y="29" font-size="12" text-anchor="middle" fill="#808080">Импорт</text>
+  <rect x="310" y="10" width="120" height="28" rx="6" fill="#4a9eff"/>
+  <text x="370" y="29" font-size="12" font-weight="600" text-anchor="middle" fill="#ffffff">Результат</text>
+  <text x="480" y="29" font-size="12" text-anchor="middle" fill="#808080">История</text>
+  <text x="1320" y="29" font-size="16" text-anchor="middle" fill="#808080">⚙</text>
+  <text x="1360" y="29" font-size="16" text-anchor="middle" fill="#808080">?</text>
+  
+  <!-- left rail -->
+  <rect x="0" y="48" width="56" height="830" fill="#1a1a1a"/>
+  <line x1="56" y1="48" x2="56" y2="878" stroke="#3a3a3a"/>
+  <text x="28" y="86" font-size="18" text-anchor="middle" fill="#606060">📁</text>
+  <text x="28" y="140" font-size="18" text-anchor="middle" fill="#606060">⚙</text>
+  <rect x="8" y="160" width="40" height="40" rx="6" fill="#2b2b2b"/>
+  <text x="28" y="186" font-size="18" text-anchor="middle" fill="#4a9eff">⬢</text>
+  <text x="28" y="240" font-size="18" text-anchor="middle" fill="#606060">◇</text>
+  <text x="28" y="290" font-size="18" text-anchor="middle" fill="#606060">🕒</text>
+  
+  <!-- left settings panel -->
+  <rect x="56" y="48" width="280" height="830" fill="#2b2b2b"/>
+  <line x1="336" y1="48" x2="336" y2="878" stroke="#3a3a3a"/>
+  
+  <text x="72" y="76" font-size="11" font-weight="700" fill="#808080" letter-spacing="1">ПАРАМЕТРЫ</text>
+  <text x="72" y="108" font-size="12" font-weight="600" fill="#d4d4d4">Бэкенд</text>
+  <circle cx="80" cy="130" r="6" fill="#4a9eff"/>
+  <circle cx="80" cy="130" r="3" fill="#ffffff"/>
+  <text x="96" y="134" font-size="12" fill="#d4d4d4">Удалённый</text>
+  <circle cx="80" cy="154" r="6" fill="none" stroke="#808080" stroke-width="1.5"/>
+  <text x="96" y="158" font-size="12" fill="#d4d4d4">Локальный</text>
+  <line x1="72" y1="178" x2="320" y2="178" stroke="#3a3a3a"/>
+  
+  <text x="72" y="204" font-size="12" font-weight="600" fill="#d4d4d4">▾  Сетка</text>
+  <text x="72" y="230" font-size="11" fill="#808080">Плотность</text>
+  <rect x="72" y="238" width="248" height="26" rx="4" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="84" y="255" font-size="12" fill="#d4d4d4">2 (каждый 2-й пиксель)</text>
+  <line x1="72" y1="290" x2="320" y2="290" stroke="#3a3a3a"/>
+  
+  <text x="72" y="316" font-size="12" font-weight="600" fill="#d4d4d4">▾  Экспорт</text>
+  <text x="72" y="342" font-size="11" fill="#808080">Формат</text>
+  <rect x="72" y="350" width="248" height="26" rx="4" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="84" y="367" font-size="12" fill="#d4d4d4">GLB (glTF binary)</text>
+  <line x1="72" y1="402" x2="320" y2="402" stroke="#3a3a3a"/>
+  
+  <!-- Info section -->
+  <text x="72" y="428" font-size="11" font-weight="700" fill="#808080" letter-spacing="1">ИНФОРМАЦИЯ</text>
+  <text x="72" y="454" font-size="11" fill="#808080">Модель</text>
+  <text x="72" y="472" font-size="12" fill="#d4d4d4">v1.2.3 (remote)</text>
+  <text x="72" y="498" font-size="11" fill="#808080">Устройство</text>
+  <text x="72" y="516" font-size="12" fill="#d4d4d4">cuda:0 (NVIDIA A10)</text>
+  <text x="72" y="542" font-size="11" fill="#808080">Время</text>
+  <text x="72" y="560" font-size="12" fill="#d4d4d4">12.4 сек</text>
+  <text x="72" y="586" font-size="11" fill="#808080">Вершин / Треугольников</text>
+  <text x="72" y="604" font-size="12" fill="#d4d4d4">48,212 / 96,120</text>
+  
+  <!-- main area -->
+  <rect x="336" y="48" width="1104" height="830" fill="#232323"/>
+  
+  <text x="376" y="92" font-size="20" font-weight="600" fill="#e0e0e0">Результат реконструкции</text>
+  <text x="376" y="114" font-size="12" fill="#808080">job_20261112_143022 · 4 фото · 12.4 сек</text>
+  
+  <!-- tabs -->
+  <rect x="376" y="130" width="90" height="32" rx="6" fill="#4a9eff"/>
+  <text x="421" y="151" font-size="12" font-weight="600" text-anchor="middle" fill="#ffffff">Сетка</text>
+  <rect x="472" y="130" width="130" height="32" rx="6" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="537" y="151" font-size="12" text-anchor="middle" fill="#d4d4d4">Карта глубины</text>
+  <rect x="608" y="130" width="100" height="32" rx="6" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="658" y="151" font-size="12" text-anchor="middle" fill="#d4d4d4">Текстура</text>
+  
+  <!-- 3D viewer -->
+  <rect x="376" y="178" width="1024" height="520" rx="8" fill="#0f0f0f" stroke="#3a3a3a"/>
+  <line x1="500" y1="650" x2="1276" y2="650" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="500" y1="600" x2="1276" y2="600" stroke="#2a2a2a" stroke-width="0.3"/>
+  <line x1="500" y1="550" x2="1276" y2="550" stroke="#2a2a2a" stroke-width="0.3"/>
+  
+  <!-- head mesh -->
+  <ellipse cx="888" cy="420" rx="150" ry="200" fill="none" stroke="#4a9eff" stroke-width="1.2" opacity="0.7"/>
+  <ellipse cx="888" cy="350" rx="100" ry="70" fill="none" stroke="#4a9eff" stroke-width="0.8" opacity="0.5"/>
+  <ellipse cx="888" cy="350" rx="60" ry="45" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.4"/>
+  <line x1="888" y1="220" x2="888" y2="620" stroke="#2a2a2a" stroke-dasharray="2 4"/>
+  <line x1="738" y1="420" x2="1038" y2="420" stroke="#2a2a2a" stroke-dasharray="2 4"/>
+  <path d="M 800 350 Q 888 320 976 350" stroke="#4a9eff" fill="none" stroke-width="0.5" opacity="0.4"/>
+  <path d="M 800 400 Q 888 380 976 400" stroke="#4a9eff" fill="none" stroke-width="0.5" opacity="0.4"/>
+  <path d="M 800 450 Q 888 440 976 450" stroke="#4a9eff" fill="none" stroke-width="0.5" opacity="0.4"/>
+  
+  <text x="888" y="660" font-size="12" text-anchor="middle" fill="#4a9eff">Wireframe + Shading</text>
+  
+  <!-- overlay: controls -->
+  <rect x="392" y="620" width="200" height="64" rx="6" fill="#1a1a1a" opacity="0.9" stroke="#3a3a3a"/>
+  <text x="404" y="640" font-size="10" fill="#808080">Управление</text>
+  <text x="404" y="658" font-size="11" fill="#d4d4d4">ЛКМ — вращение</text>
+  <text x="404" y="674" font-size="11" fill="#d4d4d4">Колесо — зум</text>
+  
+  <!-- overlay: view mode -->
+  <rect x="1240" y="194" width="148" height="80" rx="6" fill="#1a1a1a" opacity="0.9" stroke="#3a3a3a"/>
+  <text x="1252" y="214" font-size="10" fill="#808080">Вид</text>
+  <text x="1252" y="232" font-size="11" fill="#4ec9b0">● Wireframe</text>
+  <text x="1252" y="250" font-size="11" fill="#808080">○ Shaded</text>
+  <text x="1252" y="268" font-size="11" fill="#808080">○ Texture</text>
+  
+  <!-- warnings -->
+  <rect x="376" y="714" width="1024" height="42" rx="6" fill="#3a3020" stroke="#5a4a20"/>
+  <text x="392" y="740" font-size="12" fill="#ffcc02">⚠  На 2 фото обнаружены очки — выполнено восстановление скрытых участков кожи</text>
+  
+  <!-- action bar -->
+  <rect x="376" y="770" width="1024" height="48" rx="8" fill="#2b2b2b"/>
+  <rect x="396" y="778" width="140" height="32" rx="6" fill="#4a9eff"/>
+  <text x="466" y="800" font-size="12" font-weight="600" text-anchor="middle" fill="#ffffff">Экспорт GLB</text>
+  <rect x="548" y="778" width="160" height="32" rx="6" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="628" y="800" font-size="12" text-anchor="middle" fill="#d4d4d4">Сохранить</text>
+  <rect x="720" y="778" width="140" height="32" rx="6" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="790" y="800" font-size="12" text-anchor="middle" fill="#d4d4d4">В историю</text>
+  <text x="1384" y="800" font-size="11" text-anchor="end" fill="#4ec9b0">✓ Готово</text>
+  
+  <!-- status bar -->
+  <rect x="0" y="878" width="1440" height="22" fill="#1a1a1a"/>
+  <text x="16" y="893" font-size="10" fill="#606060">Готово · 12.4 сек · job_20261112_143022</text>
+  <text x="1424" y="893" font-size="10" text-anchor="end" fill="#606060">backend: remote · cuda:0</text>
+</svg>

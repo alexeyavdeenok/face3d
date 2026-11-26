@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="1440" height="900" fill="#232323"/>
+  
+  <!-- header -->
+  <rect x="0" y="0" width="1440" height="48" fill="#1a1a1a"/>
+  <line x1="0" y1="48" x2="1440" y2="48" stroke="#3a3a3a"/>
+  <circle cx="24" cy="24" r="9" fill="#4a9eff"/>
+  <text x="40" y="29" font-size="14" font-weight="600" fill="#e0e0e0">Face3D Studio</text>
+  
+  <rect x="220" y="10" width="100" height="28" rx="6" fill="#4a9eff"/>
+  <text x="270" y="29" font-size="12" font-weight="600" text-anchor="middle" fill="#ffffff">Импорт</text>
+  <text x="360" y="29" font-size="12" text-anchor="middle" fill="#808080">Результат</text>
+  <text x="450" y="29" font-size="12" text-anchor="middle" fill="#808080">История</text>
+  
+  <text x="1320" y="29" font-size="16" text-anchor="middle" fill="#808080">⚙</text>
+  <text x="1360" y="29" font-size="16" text-anchor="middle" fill="#808080">?</text>
+  
+  <!-- left rail -->
+  <rect x="0" y="48" width="56" height="830" fill="#1a1a1a"/>
+  <line x1="56" y1="48" x2="56" y2="878" stroke="#3a3a3a"/>
+  <rect x="8" y="60" width="40" height="40" rx="6" fill="#2b2b2b"/>
+  <text x="28" y="86" font-size="18" text-anchor="middle" fill="#4a9eff">📁</text>
+  <text x="28" y="140" font-size="18" text-anchor="middle" fill="#606060">⚙</text>
+  <text x="28" y="190" font-size="18" text-anchor="middle" fill="#606060">⬢</text>
+  <text x="28" y="240" font-size="18" text-anchor="middle" fill="#606060">◇</text>
+  <text x="28" y="290" font-size="18" text-anchor="middle" fill="#606060">🕒</text>
+  
+  <!-- left settings panel -->
+  <rect x="56" y="48" width="280" height="830" fill="#2b2b2b"/>
+  <line x1="336" y1="48" x2="336" y2="878" stroke="#3a3a3a"/>
+  
+  <text x="72" y="76" font-size="11" font-weight="700" fill="#808080" letter-spacing="1">ПАРАМЕТРЫ</text>
+  
+  <text x="72" y="108" font-size="12" font-weight="600" fill="#d4d4d4">Бэкенд</text>
+  <circle cx="80" cy="130" r="6" fill="#4a9eff"/>
+  <circle cx="80" cy="130" r="3" fill="#ffffff"/>
+  <text x="96" y="134" font-size="12" fill="#d4d4d4">Удалённый</text>
+  <circle cx="80" cy="154" r="6" fill="none" stroke="#808080" stroke-width="1.5"/>
+  <text x="96" y="158" font-size="12" fill="#d4d4d4">Локальный</text>
+  
+  <line x1="72" y1="178" x2="320" y2="178" stroke="#3a3a3a"/>
+  
+  <text x="72" y="204" font-size="12" font-weight="600" fill="#d4d4d4">▾  Сетка</text>
+  <text x="72" y="230" font-size="11" fill="#808080">Плотность</text>
+  <rect x="72" y="238" width="248" height="26" rx="4" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="84" y="255" font-size="12" fill="#d4d4d4">2 (каждый 2-й пиксель)</text>
+  <text x="308" y="255" font-size="10" text-anchor="end" fill="#808080">▾</text>
+  
+  <text x="72" y="286" font-size="11" fill="#808080">Max depth jump</text>
+  <rect x="72" y="294" width="248" height="26" rx="4" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="84" y="311" font-size="12" fill="#d4d4d4">0.05</text>
+  
+  <text x="72" y="342" font-size="11" fill="#808080">Depth mode</text>
+  <rect x="72" y="350" width="248" height="26" rx="4" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="84" y="367" font-size="12" fill="#d4d4d4">relative</text>
+  <text x="308" y="367" font-size="10" text-anchor="end" fill="#808080">▾</text>
+  
+  <line x1="72" y1="396" x2="320" y2="396" stroke="#3a3a3a"/>
+  
+  <text x="72" y="422" font-size="12" font-weight="600" fill="#d4d4d4">▾  Экспорт</text>
+  <text x="72" y="448" font-size="11" fill="#808080">Формат</text>
+  <rect x="72" y="456" width="248" height="26" rx="4" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="84" y="473" font-size="12" fill="#d4d4d4">GLB (glTF binary)</text>
+  <text x="308" y="473" font-size="10" text-anchor="end" fill="#808080">▾</text>
+  
+  <line x1="72" y1="502" x2="320" y2="502" stroke="#3a3a3a"/>
+  <text x="72" y="528" font-size="12" font-weight="600" fill="#d4d4d4">▸  Дополнительно</text>
+  
+  <!-- main area -->
+  <rect x="336" y="48" width="1104" height="830" fill="#232323"/>
+  
+  <text x="376" y="92" font-size="20" font-weight="600" fill="#e0e0e0">Загрузка фотографий</text>
+  <text x="376" y="114" font-size="12" fill="#808080">Добавьте фотографии лица с разных ракурсов. Минимум 3 фото.</text>
+  
+  <!-- big drop zone -->
+  <rect x="376" y="140" width="1024" height="440" rx="12" fill="#1a1a1a" stroke="#4a9eff" stroke-width="2" stroke-dasharray="10 6"/>
+  <circle cx="888" cy="310" r="48" fill="#2b2b2b" stroke="#4a9eff" stroke-width="2"/>
+  <path d="M 888 290 L 888 330 M 872 306 L 888 290 L 904 306" stroke="#4a9eff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="888" y="396" font-size="18" font-weight="600" text-anchor="middle" fill="#e0e0e0">Перетащите фотографии сюда</text>
+  <text x="888" y="420" font-size="13" text-anchor="middle" fill="#808080">или</text>
+  <rect x="828" y="438" width="120" height="34" rx="6" fill="#4a9eff"/>
+  <text x="888" y="460" font-size="13" font-weight="600" text-anchor="middle" fill="#ffffff">Выбрать файлы</text>
+  <text x="888" y="500" font-size="11" text-anchor="middle" fill="#606060">Поддерживаются: JPG, PNG, WEBP, HEIC · до 50 МБ каждый</text>
+  
+  <!-- thumbnails -->
+  <text x="376" y="620" font-size="13" font-weight="600" fill="#d4d4d4">Загруженные фото (4)</text>
+  <text x="1400" y="620" font-size="12" text-anchor="end" fill="#4a9eff">+ Добавить ещё</text>
+  
+  <rect x="376" y="640" width="130" height="130" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="441" y="700" font-size="11" text-anchor="middle" fill="#606060">IMG_01.jpg</text>
+  <text x="441" y="716" font-size="10" text-anchor="middle" fill="#4ec9b0">✓</text>
+  
+  <rect x="520" y="640" width="130" height="130" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="585" y="700" font-size="11" text-anchor="middle" fill="#606060">IMG_02.jpg</text>
+  <text x="585" y="716" font-size="10" text-anchor="middle" fill="#4ec9b0">✓</text>
+  
+  <rect x="664" y="640" width="130" height="130" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="729" y="700" font-size="11" text-anchor="middle" fill="#606060">IMG_03.jpg</text>
+  <text x="729" y="716" font-size="10" text-anchor="middle" fill="#4ec9b0">✓</text>
+  
+  <rect x="808" y="640" width="130" height="130" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="873" y="700" font-size="11" text-anchor="middle" fill="#606060">IMG_04.jpg</text>
+  <text x="873" y="716" font-size="10" text-anchor="middle" fill="#4ec9b0">✓</text>
+  
+  <rect x="952" y="640" width="130" height="130" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-dasharray="4 3"/>
+  <text x="1017" y="712" font-size="32" text-anchor="middle" fill="#606060">+</text>
+  
+  <!-- action bar -->
+  <rect x="376" y="800" width="1024" height="56" rx="8" fill="#2b2b2b"/>
+  <text x="396" y="834" font-size="13" fill="#4ec9b0">✓  4 фото загружено · ракурсы покрывают лицо</text>
+  <rect x="1160" y="814" width="220" height="36" rx="6" fill="#4a9eff"/>
+  <text x="1270" y="837" font-size="13" font-weight="600" text-anchor="middle" fill="#ffffff">▶  Сгенерировать</text>
+  
+  <!-- status bar -->
+  <rect x="0" y="878" width="1440" height="22" fill="#1a1a1a"/>
+  <text x="16" y="893" font-size="10" fill="#606060">Готов к запуску · backend: remote · model v1.2.3</text>
+  <text x="1424" y="893" font-size="10" text-anchor="end" fill="#606060">Python 3.11 · PySide6</text>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="1440" height="900" fill="#232323"/>
+  
+  <!-- header -->
+  <rect x="0" y="0" width="1440" height="48" fill="#1a1a1a"/>
+  <line x1="0" y1="48" x2="1440" y2="48" stroke="#3a3a3a"/>
+  <circle cx="24" cy="24" r="9" fill="#4a9eff"/>
+  <text x="40" y="29" font-size="14" font-weight="600" fill="#e0e0e0">Face3D Studio</text>
+  <text x="270" y="29" font-size="12" text-anchor="middle" fill="#808080">Импорт</text>
+  <text x="370" y="29" font-size="12" text-anchor="middle" fill="#808080">Результат</text>
+  <rect x="420" y="10" width="120" height="28" rx="6" fill="#4a9eff"/>
+  <text x="480" y="29" font-size="12" font-weight="600" text-anchor="middle" fill="#ffffff">История</text>
+  <text x="1320" y="29" font-size="16" text-anchor="middle" fill="#808080">⚙</text>
+  <text x="1360" y="29" font-size="16" text-anchor="middle" fill="#808080">?</text>
+  
+  <!-- left rail -->
+  <rect x="0" y="48" width="56" height="830" fill="#1a1a1a"/>
+  <line x1="56" y1="48" x2="56" y2="878" stroke="#3a3a3a"/>
+  <text x="28" y="86" font-size="18" text-anchor="middle" fill="#606060">📁</text>
+  <text x="28" y="140" font-size="18" text-anchor="middle" fill="#606060">⚙</text>
+  <text x="28" y="190" font-size="18" text-anchor="middle" fill="#606060">⬢</text>
+  <text x="28" y="240" font-size="18" text-anchor="middle" fill="#606060">◇</text>
+  <rect x="8" y="260" width="40" height="40" rx="6" fill="#2b2b2b"/>
+  <text x="28" y="286" font-size="18" text-anchor="middle" fill="#4a9eff">🕒</text>
+  
+  <!-- main area (no left panel on this screen) -->
+  <rect x="56" y="48" width="1384" height="830" fill="#232323"/>
+  
+  <text x="96" y="92" font-size="20" font-weight="600" fill="#e0e0e0">История заданий</text>
+  <text x="96" y="114" font-size="12" fill="#808080">Все реконструкции, сохранённые в базе данных</text>
+  
+  <!-- filters -->
+  <rect x="96" y="140" width="180" height="32" rx="6" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="186" y="161" font-size="12" text-anchor="middle" fill="#d4d4d4">Все статусы ▾</text>
+  <rect x="288" y="140" width="180" height="32" rx="6" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="378" y="161" font-size="12" text-anchor="middle" fill="#d4d4d4">Бэкенд: любой ▾</text>
+  <rect x="480" y="140" width="220" height="32" rx="6" fill="#1a1a1a" stroke="#3a3a3a"/>
+  <text x="590" y="161" font-size="12" text-anchor="middle" fill="#808080">Поиск по имени…</text>
+  
+  <!-- table header -->
+  <rect x="96" y="196" width="1300" height="36" fill="#1a1a1a"/>
+  <text x="116" y="218" font-size="11" font-weight="600" fill="#808080">ID</text>
+  <text x="300" y="218" font-size="11" font-weight="600" fill="#808080">ДАТА</text>
+  <text x="500" y="218" font-size="11" font-weight="600" fill="#808080">ФОТО</text>
+  <text x="600" y="218" font-size="11" font-weight="600" fill="#808080">БЭКЕНД</text>
+  <text x="720" y="218" font-size="11" font-weight="600" fill="#808080">ВРЕМЯ</text>
+  <text x="840" y="218" font-size="11" font-weight="600" fill="#808080">СТАТУС</text>
+  <text x="1320" y="218" font-size="11" font-weight="600" text-anchor="end" fill="#808080">ДЕЙСТВИЯ</text>
+  
+  <!-- rows -->
+  <rect x="96" y="232" width="1300" height="56" fill="#2b2b2b"/>
+  <line x1="96" y1="288" x2="1396" y2="288" stroke="#3a3a3a"/>
+  <text x="116" y="266" font-size="12" fill="#d4d4d4">job_143022</text>
+  <text x="300" y="266" font-size="12" fill="#d4d4d4">12.11.2026 14:30</text>
+  <text x="500" y="266" font-size="12" fill="#d4d4d4">4</text>
+  <text x="600" y="266" font-size="12" fill="#d4d4d4">remote</text>
+  <text x="720" y="266" font-size="12" fill="#d4d4d4">12.4с</text>
+  <text x="840" y="266" font-size="12" fill="#4ec9b0">✓ Готово</text>
+  <text x="1320" y="266" font-size="12" text-anchor="end" fill="#4a9eff">Открыть · Экспорт</text>
+  
+  <rect x="96" y="288" width="1300" height="56" fill="#232323"/>
+  <line x1="96" y1="344" x2="1396" y2="344" stroke="#3a3a3a"/>
+  <text x="116" y="322" font-size="12" fill="#d4d4d4">job_142755</text>
+  <text x="300" y="322" font-size="12" fill="#d4d4d4">12.11.2026 14:19</text>
+  <text x="500" y="322" font-size="12" fill="#d4d4d4">6</text>
+  <text x="600" y="322" font-size="12" fill="#d4d4d4">remote</text>
+  <text x="720" y="322" font-size="12" fill="#d4d4d4">18.2с</text>
+  <text x="840" y="322" font-size="12" fill="#4ec9b0">✓ Готово</text>
+  <text x="1320" y="322" font-size="12" text-anchor="end" fill="#4a9eff">Открыть · Экспорт</text>
+  
+  <rect x="96" y="344" width="1300" height="56" fill="#2b2b2b"/>
+  <line x1="96" y1="400" x2="1396" y2="400" stroke="#3a3a3a"/>
+  <text x="116" y="378" font-size="12" fill="#d4d4d4">job_142201</text>
+  <text x="300" y="378" font-size="12" fill="#d4d4d4">12.11.2026 13:44</text>
+  <text x="500" y="378" font-size="12" fill="#d4d4d4">3</text>
+  <text x="600" y="378" font-size="12" fill="#d4d4d4">local</text>
+  <text x="720" y="378" font-size="12" fill="#d4d4d4">—</text>
+  <text x="840" y="378" font-size="12" fill="#ffcc02">⊘ Отменено</text>
+  <text x="1320" y="378" font-size="12" text-anchor="end" fill="#4a9eff">Открыть · Удалить</text>
+  
+  <rect x="96" y="400" width="1300" height="56" fill="#232323"/>
+  <line x1="96" y1="456" x2="1396" y2="456" stroke="#3a3a3a"/>
+  <text x="116" y="434" font-size="12" fill="#d4d4d4">job_141809</text>
+  <text x="300" y="434" font-size="12" fill="#d4d4d4">12.11.2026 13:02</text>
+  <text x="500" y="434" font-size="12" fill="#d4d4d4">2</text>
+  <text x="600" y="434" font-size="12" fill="#d4d4d4">remote</text>
+  <text x="720" y="434" font-size="12" fill="#d4d4d4">—</text>
+  <text x="840" y="434" font-size="12" fill="#f48771">✕ Ошибка</text>
+  <text x="1320" y="434" font-size="12" text-anchor="end" fill="#4a9eff">Открыть · Повторить</text>
+  
+  <rect x="96" y="456" width="1300" height="56" fill="#2b2b2b"/>
+  <text x="116" y="490" font-size="12" fill="#d4d4d4">job_141344</text>
+  <text x="300" y="490" font-size="12" fill="#d4d4d4">12.11.2026 12:37</text>
+  <text x="500" y="490" font-size="12" fill="#d4d4d4">5</text>
+  <text x="600" y="490" font-size="12" fill="#d4d4d4">remote</text>
+  <text x="720" y="490" font-size="12" fill="#d4d4d4">22.8с</text>
+  <text x="840" y="490" font-size="12" fill="#4ec9b0">✓ Готово</text>
+  <text x="1320" y="490" font-size="12" text-anchor="end" fill="#4a9eff">Открыть · Экспорт</text>
+  
+  <!-- status bar -->
+  <rect x="0" y="878" width="1440" height="22" fill="#1a1a1a"/>
+  <text x="16" y="893" font-size="10" fill="#606060">5 записей · PostgreSQL · 3 готово, 1 отменено, 1 ошибка</text>
+  <text x="1424" y="893" font-size="10" text-anchor="end" fill="#606060">Обновлено: 14:30</text>
+</svg>

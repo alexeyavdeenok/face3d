@@ -1,0 +1,43 @@
+
+@startuml
+title Диаграмма переходов между экранами Face3D
+
+[*] --> MainEmpty
+
+state "Главный экран" as Main {
+    state "1.1 Нет фотографий" as MainEmpty
+    state "1.2 Фотографии загружены" as MainLoaded
+    state "1.3 Генерация успешна" as MainSuccess
+    state "1.4 Ошибка генерации" as MainError
+
+    MainEmpty --> MainLoaded : Добавить фотографии
+    MainLoaded --> MainEmpty : Удалить все фотографии
+
+    MainLoaded --> MainSuccess : Генерация успешна
+    MainLoaded --> MainError : Генерация завершилась ошибкой
+
+    MainError --> MainLoaded : Повторить генерацию
+    MainSuccess --> MainLoaded : Изменить фотографии
+
+    MainSuccess --> MainEmpty : Удалить результат
+}
+
+state "Экран генерации" as Generation
+state "Экран истории" as History
+
+MainEmpty --> History : История
+MainLoaded --> History : История
+MainSuccess --> History : История
+MainError --> History : История
+
+MainLoaded --> Generation : Сгенерировать
+Generation --> MainSuccess : Успешное завершение
+Generation --> MainError : Ошибка обработки
+Generation --> MainLoaded : Отмена
+
+History --> MainEmpty : Назад\n(если последнее состояние — 1.1)
+History --> MainLoaded : Назад\n(если последнее состояние — 1.2)
+History --> MainSuccess : Назад\n(если последнее состояние — 1.3)
+History --> MainError : Назад\n(если последнее состояние — 1.4)
+
+@enduml

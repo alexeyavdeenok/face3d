@@ -1,0 +1,54 @@
+<svg width="800" height="420" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+    </defs>
+
+    <!-- Фон -->
+    <rect width="800" height="420" fill="#F8F9FB"/>
+
+    <!-- ВАШ ЗЕЛЕНЫЙ БЛОК (без обводки, как в оригинале) -->
+    <rect x="40" y="40" width="720" height="340" rx="12" fill="#EEFBF0"/>
+
+    <!-- Заголовок "Реконструкция завершена" -->
+    <g transform="translate(70, 80)">
+        <text font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="500" fill="#166534">Реконструкция завершена</text>
+        <text x="280" y="0" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#166534">✓</text>
+    </g>
+
+    <!-- ТРИ НОВЫЕ КНОПКИ (ghost/minimal стиль, размер как у ваших оригинальных) -->
+    
+    <!-- Кнопка Экспорт -->
+    <g transform="translate(70, 160)" style="cursor: pointer;">
+        <rect width="180" height="80" rx="10" fill="transparent" stroke="#6366F1" stroke-width="1.5"/>
+        <text x="90" y="46" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" fill="#6366F1" text-anchor="middle">Экспорт</text>
+    </g>
+
+    <!-- Кнопка Просмотр -->
+    <g transform="translate(290, 160)" style="cursor: pointer;">
+        <rect width="180" height="80" rx="10" fill="transparent" stroke="#6366F1" stroke-width="1.5"/>
+        <text x="90" y="46" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" fill="#6366F1" text-anchor="middle">Просмотр</text>
+    </g>
+
+    <!-- Кнопка Удалить -->
+    <g transform="translate(510, 160)" style="cursor: pointer;">
+        <rect width="180" height="80" rx="10" fill="transparent" stroke="#EF4444" stroke-width="1.5"/>
+        <text x="90" y="46" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" fill="#EF4444" text-anchor="middle">Удалить</text>
+    </g>
+
+    <!-- КНОПКА ИСТОРИЯ (как в вашем оригинале — лавандовая) -->
+    <g transform="translate(450, 290)" filter="url(#shadow)" style="cursor: pointer;">
+        <rect width="140" height="48" rx="10" fill="#E0E7FF"/>
+        <text x="60" y="30" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#6366F1" text-anchor="middle">История</text>
+        <text x="110" y="30" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#6366F1" text-anchor="middle">↺</text>
+    </g>
+
+    <!-- КНОПКА СГЕНЕРИРОВАТЬ (как в вашем оригинале — синяя) -->
+    <g transform="translate(610, 290)" filter="url(#shadow)" style="cursor: pointer;">
+        <rect width="140" height="48" rx="10" fill="#6366F1"/>
+        <text x="60" y="30" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="middle">Сгенерировать</text>
+        <text x="115" y="30" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">▶</text>
+    </g>
+
+</svg>

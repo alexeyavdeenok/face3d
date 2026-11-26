@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 880" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <!-- Фон приложения -->
+  <rect width="1400" height="880" fill="#f5f5f7"/>
+
+  <!-- ============ ВЕРХНЯЯ ПАНЕЛЬ ============ -->
+  <rect x="0" y="0" width="1400" height="52" fill="#ffffff"/>
+  <line x1="0" y1="52" x2="1400" y2="52" stroke="#d2d2d7" stroke-width="1"/>
+
+  <!-- Логотип -->
+  <circle cx="28" cy="26" r="10" fill="#0071e3"/>
+  <text x="46" y="32" font-size="15" font-weight="600" fill="#1d1d1f">Face3D Studio</text>
+
+  <!-- Правые кнопки -->
+  <text x="1150" y="32" font-size="13" fill="#1d1d1f">История</text>
+  <text x="1230" y="32" font-size="13" fill="#1d1d1f">Настройки</text>
+  <circle cx="1330" cy="26" r="12" fill="none" stroke="#86868b" stroke-width="1.5"/>
+  <text x="1326" y="31" font-size="13" fill="#86868b">?</text>
+
+  <!-- ============ ЛЕВАЯ ПАНЕЛЬ ============ -->
+  <rect x="0" y="52" width="440" height="828" fill="#ffffff"/>
+  <line x1="440" y1="52" x2="440" y2="880" stroke="#d2d2d7" stroke-width="1"/>
+
+  <!-- Заголовок раздела -->
+  <text x="24" y="86" font-size="11" font-weight="700" fill="#86868b" letter-spacing="1">ФОТОГРАФИИ</text>
+
+  <!-- Drop-зона -->
+  <rect x="24" y="100" width="392" height="120" rx="10" fill="#f5f5f7" stroke="#0071e3" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="220" y="150" font-size="28" text-anchor="middle" fill="#0071e3">⬆</text>
+  <text x="220" y="180" font-size="13" text-anchor="middle" fill="#1d1d1f" font-weight="500">Перетащите фото сюда</text>
+  <text x="220" y="200" font-size="11" text-anchor="middle" fill="#86868b">или нажмите, чтобы выбрать файлы</text>
+
+  <!-- Миниатюры -->
+  <g>
+    <rect x="24" y="240" width="88" height="88" rx="6" fill="#e5e5ea" stroke="#d2d2d7"/>
+    <text x="68" y="290" font-size="11" text-anchor="middle" fill="#86868b">IMG_01</text>
+
+    <rect x="124" y="240" width="88" height="88" rx="6" fill="#e5e5ea" stroke="#d2d2d7"/>
+    <text x="168" y="290" font-size="11" text-anchor="middle" fill="#86868b">IMG_02</text>
+
+    <rect x="224" y="240" width="88" height="88" rx="6" fill="#e5e5ea" stroke="#d2d2d7"/>
+    <text x="268" y="290" font-size="11" text-anchor="middle" fill="#86868b">IMG_03</text>
+
+    <rect x="324" y="240" width="88" height="88" rx="6" fill="#e5e5ea" stroke="#d2d2d7"/>
+    <text x="368" y="290" font-size="11" text-anchor="middle" fill="#86868b">IMG_04</text>
+
+    <!-- Кнопка добавить -->
+    <rect x="24" y="340" width="88" height="88" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-dasharray="4 3"/>
+    <text x="68" y="390" font-size="28" text-anchor="middle" fill="#86868b">+</text>
+  </g>
+
+  <!-- Кнопки под миниатюрами -->
+  <text x="24" y="456" font-size="12" fill="#0071e3" font-weight="500">+ Добавить</text>
+  <text x="120" y="456" font-size="12" fill="#86868b">Очистить</text>
+
+  <!-- Индикатор валидации -->
+  <rect x="24" y="474" width="392" height="32" rx="6" fill="#e8f5e9"/>
+  <text x="36" y="495" font-size="13" fill="#2e7d32">✓  4 фото · ракурсы покрывают лицо</text>
+
+  <!-- Параметры -->
+  <text x="24" y="540" font-size="11" font-weight="700" fill="#86868b" letter-spacing="1">ПАРАМЕТРЫ</text>
+  <text x="416" y="540" font-size="11" text-anchor="end" fill="#86868b">свернуть</text>
+
+  <text x="24" y="566" font-size="12" fill="#1d1d1f">Плотность сетки</text>
+  <rect x="180" y="552" width="80" height="24" rx="5" fill="#ffffff" stroke="#d2d2d7"/>
+  <text x="220" y="568" font-size="12" text-anchor="middle" fill="#1d1d1f">2  ▾</text>
+
+  <text x="24" y="600" font-size="12" fill="#1d1d1f">Бэкенд</text>
+  <circle cx="200" cy="596" r="7" fill="#0071e3"/>
+  <circle cx="200" cy="596" r="3" fill="#ffffff"/>
+  <text x="216" y="600" font-size="12" fill="#1d1d1f">Удалённый</text>
+  <circle cx="310" cy="596" r="7" fill="none" stroke="#86868b" stroke-width="1.5"/>
+  <text x="326" y="600" font-size="12" fill="#1d1d1f">Локальный</text>
+
+  <text x="24" y="632" font-size="12" fill="#1d1d1f">Формат экспорта</text>
+  <rect x="180" y="618" width="80" height="24" rx="5" fill="#ffffff" stroke="#d2d2d7"/>
+  <text x="220" y="634" font-size="12" text-anchor="middle" fill="#1d1d1f">GLB  ▾</text>
+
+  <!-- Кнопка Генерация -->
+  <rect x="24" y="672" width="392" height="48" rx="10" fill="#0071e3"/>
+  <text x="220" y="702" font-size="15" font-weight="600" text-anchor="middle" fill="#ffffff">▶  Сгенерировать</text>
+
+  <!-- Прогресс (пример состояния «в процессе») -->
+  <text x="24" y="748" font-size="11" fill="#86868b">Построение сетки…</text>
+  <text x="416" y="748" font-size="11" text-anchor="end" fill="#86868b">65%</text>
+  <rect x="24" y="756" width="392" height="6" rx="3" fill="#e5e5ea"/>
+  <rect x="24" y="756" width="255" height="6" rx="3" fill="#0071e3"/>
+
+  <!-- Отмена -->
+  <rect x="24" y="776" width="120" height="32" rx="6" fill="#ffffff" stroke="#d2d2d7"/>
+  <text x="84" y="797" font-size="12" text-anchor="middle" fill="#1d1d1f">Отмена</text>
+
+  <!-- ============ ПРАВАЯ ПАНЕЛЬ ============ -->
+  <!-- Заголовок раздела -->
+  <text x="466" y="86" font-size="11" font-weight="700" fill="#86868b" letter-spacing="1">РЕЗУЛЬТАТ</text>
+
+  <!-- Вкладки -->
+  <rect x="466" y="100" width="90" height="32" rx="6" fill="#0071e3"/>
+  <text x="511" y="121" font-size="12" font-weight="600" text-anchor="middle" fill="#ffffff">Сетка</text>
+
+  <rect x="562" y="100" width="130" height="32" rx="6" fill="#ffffff" stroke="#d2d2d7"/>
+  <text x="627" y="121" font-size="12" text-anchor="middle" fill="#1d1d1f">Карта глубины</text>
+
+  <rect x="698" y="100" width="100" height="32" rx="6" fill="#ffffff" stroke="#d2d2d7"/>
+  <text x="748" y="121" font-size="12" text-anchor="middle" fill="#1d1d1f">Текстура</text>
+
+  <!-- Бейдж ModelInfo -->
+  <rect x="1150" y="102" width="226" height="28" rx="6" fill="#f5f5f7"/>
+  <text x="1263" y="121" font-size="11" text-anchor="middle" fill="#86868b">model v1.2.3 · remote · cuda</text>
+
+  <!-- 3D-вьюер -->
+  <rect x="466" y="148" width="910" height="560" rx="10" fill="#1d1d1f"/>
+  <!-- Условная сетка перспективы -->
+  <line x1="600" y1="720" x2="1240" y2="720" stroke="#3a3a3c" stroke-width="1"/>
+  <line x1="600" y1="620" x2="1240" y2="620" stroke="#3a3a3c" stroke-width="0.5"/>
+  <!-- Силуэт головы (условный меш) -->
+  <ellipse cx="921" cy="440" rx="130" ry="170" fill="none" stroke="#5a5a5c" stroke-width="1.5"/>
+  <ellipse cx="921" cy="380" rx="90" ry="60" fill="none" stroke="#5a5a5c" stroke-width="0.8"/>
+  <line x1="921" y1="270" x2="921" y2="610" stroke="#3a3a3c" stroke-width="0.5" stroke-dasharray="2 4"/>
+  <line x1="790" y1="440" x2="1052" y2="440" stroke="#3a3a3c" stroke-width="0.5" stroke-dasharray="2 4"/>
+
+  <text x="921" y="460" font-size="13" text-anchor="middle" fill="#86868b">3D-просмотрщик</text>
+  <text x="921" y="480" font-size="11" text-anchor="middle" fill="#5a5a5c">орбита · зум · wireframe</text>
+
+  <!-- Warnings-баннер -->
+  <rect x="466" y="720" width="910" height="36" rx="6" fill="#fff8e1"/>
+  <text x="482" y="743" font-size="12" fill="#9a6c00">⚠  Обнаружены очки на 2 фото — выполнено восстановление скрытых участков</text>
+
+  <!-- Кнопки экспорта -->
+  <rect x="466" y="776" width="160" height="40" rx="8" fill="#ffffff" stroke="#0071e3" stroke-width="1.5"/>
+  <text x="546" y="801" font-size="13" font-weight="500" text-anchor="middle" fill="#0071e3">Экспорт GLB</text>
+
+  <rect x="636" y="776" width="180" height="40" rx="8" fill="#ffffff" stroke="#d2d2d7"/>
+  <text x="726" y="801" font-size="13" text-anchor="middle" fill="#1d1d1f">Сохранить в историю</text>
+
+  <rect x="1196" y="776" width="180" height="40" rx="8" fill="#f5f5f7"/>
+  <text x="1286" y="801" font-size="13" font-weight="500" text-anchor="middle" fill="#1d1d1f">Новая модель</text>
+
+  <!-- ============ НИЖНИЙ СТАТУС-БАР ============ -->
+  <rect x="0" y="852" width="1400" height="28" fill="#e8e8ed"/>
+  <text x="16" y="870" font-size="11" fill="#86868b">Готово · 3 фото загружено · бэкенд: remote</text>
+  <text x="1384" y="870" font-size="11" text-anchor="end" fill="#86868b">Общее время: 12.4 сек</text>
+</svg>

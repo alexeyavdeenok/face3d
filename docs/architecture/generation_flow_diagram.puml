@@ -1,0 +1,43 @@
+
+@startuml
+title Диаграмма состояний процесса генерации Face3D
+
+[*] --> Idle
+
+state "Ожидание запуска" as Idle
+state "Подготовка данных" as Preparing
+state "Выполнение реконструкции" as Processing
+state "Отмена запрошена" as Cancelling
+state "Успешное завершение" as Completed
+state "Ошибка" as Failed
+state "Отменено" as Cancelled
+
+Idle --> Preparing : Нажать «Сгенерировать»
+Preparing --> Processing : Данные подготовлены
+Preparing --> Failed : Ошибка подготовки
+
+Processing --> Completed : Реконструкция успешна
+Processing --> Failed : Ошибка реконструкции
+Processing --> Cancelling : Нажать «Отменить»
+
+Cancelling --> Cancelled : Подтверждено завершение отмены
+Cancelling --> Completed : Задача успела завершиться
+Cancelling --> Failed : Ошибка при отмене
+
+Completed --> [*]
+Failed --> [*]
+Cancelled --> [*]
+
+note right of Processing
+  Отображаются:
+  - Анимация
+  - Прогресс (если доступен)
+  - Кнопка «Отменить»
+end note
+
+note right of Cancelling
+  Отображается состояние
+  ожидания завершения отмены.
+end note
+
+@enduml
