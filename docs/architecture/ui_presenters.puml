@@ -1,0 +1,85 @@
+
+@startuml
+
+skinparam classAttributeIconSize 0
+hide empty members
+
+title UI Architecture — MVP (View Interfaces + Adapters)
+
+package "View — Qt Quick / QML" {
+    class MainView <<QML>>
+    class GenerationView <<QML>>
+    class HistoryView <<QML>>
+}
+
+package "View Interfaces — Python" {
+    interface MainViewInterface {
+        +set_loading(loading)
+        +show_error(message)
+        +show_result(artifact)
+        +update_settings(settings)
+    }
+
+    interface GenerationViewInterface {
+        +set_progress(progress)
+        +set_loading(loading)
+        +show_result(artifact)
+        +show_error(message)
+    }
+
+    interface HistoryViewInterface {
+        +show_history(items)
+        +show_error(message)
+        +confirm_delete(job_id)
+    }
+}
+
+package "Presenter — Python" {
+    class MainPresenter
+    class GenerationPresenter
+    class HistoryPresenter
+}
+
+package "View Adapters — Python / PySide6" {
+    class MainViewAdapter
+    class GenerationViewAdapter
+    class HistoryViewAdapter
+}
+
+package "Application API" {
+    interface GenerationAPI
+    interface HistoryAPI
+    interface ExportAPI
+    interface PreviewAPI
+    interface SettingsAPI
+}
+
+MainViewAdapter ..|> MainViewInterface
+GenerationViewAdapter ..|> GenerationViewInterface
+HistoryViewAdapter ..|> HistoryViewInterface
+
+MainViewAdapter --> MainView : Управляет QML
+GenerationViewAdapter --> GenerationView : Управляет QML
+HistoryViewAdapter --> HistoryView : Управляет QML
+
+MainView --> MainViewAdapter : Сигналы
+GenerationView --> GenerationViewAdapter : Сигналы
+HistoryView --> HistoryViewAdapter : Сигналы
+
+MainPresenter --> MainViewInterface
+GenerationPresenter --> GenerationViewInterface
+HistoryPresenter --> HistoryViewInterface
+
+MainPresenter --> GenerationAPI
+MainPresenter --> HistoryAPI
+MainPresenter --> ExportAPI
+MainPresenter --> PreviewAPI
+MainPresenter --> SettingsAPI
+
+GenerationPresenter --> GenerationAPI
+
+HistoryPresenter --> HistoryAPI
+HistoryPresenter --> ExportAPI
+HistoryPresenter --> PreviewAPI
+
+@enduml
